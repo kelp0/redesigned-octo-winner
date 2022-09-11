@@ -37,3 +37,15 @@ tree_edit(tree) #Экспорт полученного дерева.
 with open('case.json','w') as treefile:
     json.dump(tree, treefile, indent=3)
         
+possible_answers = ['yes','no'] #Цикл, воспроизводящий функцию до тех пор, пока пользователь хочет повторять ее.
+contin = ''
+while not contin == 'no':
+    contin = input('Желаете начать с начала? (Введите Yes или No): ').lower()
+    while contin not in possible_answers:
+        contin = input('Такого ответа не предусмотрено. Ответом является Yes или No: ').lower
+    if contin == 'yes':
+        tree_edit(tree)
+        with open('case.json','w') as treefile:
+            json.dump(tree, treefile, indent=3)
+
+print('До свидания!')
